@@ -11,7 +11,7 @@
 
 <body>
     <h1>Mini Messageboard</h1>
-    <% messages.forEach((message)=> { %>
+    <% messages.forEach((message, index)=> { %>
         <div>
             <p>
                 <%= message.user %>
@@ -23,8 +23,9 @@
                 <%= message.added %>
             </p>
         </div>
+        <a href="<%= `message/${index}` %>"><button type="button">Open</button></a>
         <% } ) %>
-        <a href="/new"><button type="button">Add a new message</button></a>
+            <a href="/new"><button type="button">Add a new message</button></a>
 </body>
 
 </html>
