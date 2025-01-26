@@ -9,7 +9,6 @@ newMessageRouter
     res.render("form");
   })
   .post((req, res) => {
-    console.log(req.body);
     messages.push({
       text: req.body.messageUser,
       user: req.body.messageText,
