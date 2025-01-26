@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
-const path = require("node:path")
+const path = require("node:path");
 const indexRouter = require("./route/indexRouter");
 const newMessageRouter = require("./route/newMessageRouter");
 
-app.set("views", path.join(__dirname, "views"))
-app.set("view engine", "ejs")
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/new", newMessageRouter);
 app.use("/", indexRouter);

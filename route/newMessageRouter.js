@@ -1,9 +1,21 @@
-const { Router} = require("express")
+const { Router } = require("express");
+const messages = require("../messages");
 
-const newMessageRouter = Router()
+const newMessageRouter = Router();
 
-newMessageRouter.get("/", (req,res) => {
-    res.send("Hello messages")
-})
+newMessageRouter
+  .route("/")
+  .get((req, res) => {
+    res.render("form");
+  })
+  .post((req, res) => {
+    console.log(req.body);
+    messages.push({
+      text: req.body.messageUser,
+      user: req.body.messageText,
+      added: new Date(),
+    });
+    res.redirect("/");
+  });
 
-module.exports = newMessageRouter
+module.exports = newMessageRouter;
