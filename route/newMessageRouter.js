@@ -10,8 +10,8 @@ newMessageRouter
   })
   .post((req, res) => {
     messages.push({
-      text: req.body.messageUser,
-      user: req.body.messageText,
+      text: req.body.messageText,
+      user: req.body.messageUser,
       added: new Date(),
     });
     res.redirect("/");
