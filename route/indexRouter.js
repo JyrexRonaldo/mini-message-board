@@ -1,13 +1,13 @@
 const { Router } = require("express");
-const messages = require("../messages")
+const messages = require("../messages");
+const {
+  getMessageDetails,
+  getMessages,
+} = require("../controllers/indexController");
 
 const indexRouter = Router();
 
-indexRouter.get("/", (req, res) => {
-  res.render("index", { title: "Mini Messageboard", messages });
-});
-indexRouter.get("/message/:number", (req,res) => {
-  res.render("message", {message: [...messages].reverse()[Number(req.params.number)]})
-})
+indexRouter.get("/", getMessages);
+indexRouter.get("/message/:number", getMessageDetails);
 
 module.exports = indexRouter;
