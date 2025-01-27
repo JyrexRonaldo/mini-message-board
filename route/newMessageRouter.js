@@ -1,11 +1,11 @@
 const { Router } = require("express");
-const { renderInputForm, updateMessagesObject } = require("../controllers/newMessageController");
+const newMessageController = require("../controllers/newMessageController");
 
 const newMessageRouter = Router();
 
 newMessageRouter
   .route("/")
-  .get(renderInputForm)
-  .post(updateMessagesObject);
+  .get(newMessageController.renderInputForm)
+  .post(newMessageController.updateMessagesObject);
 
 module.exports = newMessageRouter;
