@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express");
 const app = express();
 const path = require("node:path");
@@ -19,8 +20,8 @@ app.use((err, req, res, next) => {
   res.status(err.statusCode || 500).send(err.message);
 });
 
-const PORT = 9000;
+const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, () => {
-  console.log("My express app running on Port 9000");
+  console.log(`My express app running on Port ${PORT}`);
 });
