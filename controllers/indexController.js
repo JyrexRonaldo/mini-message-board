@@ -1,13 +1,15 @@
-const messages = require("../messages");
+const db = require("../db/queries");
 
-const getMessages = (req, res) => {
+async function getAllMessages(req, res) {
+  const messages = await db.getAllMessages();
   res.render("index", { messages });
-};
+}
 
-const getMessageDetails = (req, res) => {
+async function getMessageDetails(req, res) {
+  const messages = await db.getAllMessages();
   res.render("message", {
     message: [...messages].reverse()[Number(req.params.number)],
   });
-};
+}
 
-module.exports = { getMessages, getMessageDetails };
+module.exports = { getAllMessages, getMessageDetails };

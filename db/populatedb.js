@@ -1,3 +1,5 @@
+const { argv } = require("node:process")
+
 const { Client } = require("pg");
 
 const SQL = `
@@ -17,7 +19,7 @@ VALUES
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString: "postgresql://jyrex:db12@localhost:5432/message_board",
+    connectionString: argv[2],
   });
   await client.connect();
   await client.query(SQL);
@@ -26,3 +28,4 @@ async function main() {
 }
 
 main();
+

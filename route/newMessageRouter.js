@@ -6,6 +6,6 @@ const newMessageRouter = Router();
 newMessageRouter
   .route("/")
   .get(newMessageController.renderInputForm)
-  .post(newMessageController.updateMessagesObject);
+  .post(newMessageController.addNewMessage);
 
 module.exports = newMessageRouter;
